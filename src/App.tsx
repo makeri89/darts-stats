@@ -3,6 +3,7 @@ import { ScoresChart } from './components/ScoresChart';
 import { ScoresList } from './components/ScoresList';
 import { CombinationsDisplay } from './components/CombinationsDisplay';
 import { useDartContext } from './hooks/useDartContext';
+import { DarkModeToggle } from './components/DarkModeToggle';
 
 function App() {
   const {
@@ -19,13 +20,18 @@ function App() {
   } = useDartContext();
 
   return (
-    <div className="min-h-screen bg-dart-cream font-body">
+    <div className="dark:bg-dart-dark-cream min-h-screen bg-dart-cream font-body">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <header className="mb-8">
-          <h1 className="mb-2 font-display text-5xl text-dart-black">Darts Score Combinations</h1>
-          <p className="font-body text-dart-black/70">
-            Explore all possible ways to achieve each score in darts
-          </p>
+        <header className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="mb-2 font-display text-5xl text-dart-black dark:text-dart-white">
+              Darts Score Combinations
+            </h1>
+            <p className="font-body text-dart-black/70 dark:text-dart-white/70">
+              Explore all possible ways to achieve each score in darts
+            </p>
+          </div>
+          <DarkModeToggle />
         </header>
 
         <DartFilters

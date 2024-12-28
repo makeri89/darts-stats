@@ -30,13 +30,13 @@ export function ScoresList({ scores, selectedScore, onScoreSelect }: Props) {
   }, [scores, sortOrder]);
 
   return (
-    <div className="rounded-lg bg-dart-white p-6 shadow-sm">
+    <div className="dark:bg-dart-dark-white rounded-lg bg-dart-white p-6 shadow-sm">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h3 className="font-display text-xl text-dart-black">Scores</h3>
+        <h3 className="font-display text-xl text-dart-black dark:text-dart-white">Scores</h3>
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value as typeof sortOrder)}
-          className="rounded-md border-dart-black/20 bg-dart-white text-xs text-dart-black focus:border-dart-green focus:ring-dart-green"
+          className="dark:bg-dart-dark-white rounded-md border-dart-black/20 bg-dart-white text-xs text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:text-dart-white"
         >
           <option value="freq-desc">Most combinations</option>
           <option value="freq-asc">Least combinations</option>
@@ -44,18 +44,22 @@ export function ScoresList({ scores, selectedScore, onScoreSelect }: Props) {
           <option value="score-desc">Score (High to Low)</option>
         </select>
       </div>
-      <div className="max-h-[300px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-dart-black/5 scrollbar-thumb-dart-green">
+      <div className="max-h-[300px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-dart-black/5 scrollbar-thumb-dart-green dark:scrollbar-track-dart-white/5">
         <ul className="space-y-2">
           {sortedScores.map((score, index) => (
             <li
               key={index}
-              className={`flex cursor-pointer items-center justify-between rounded-lg bg-dart-black/5 p-3 transition-colors hover:bg-dart-black/10 ${
+              className={`flex cursor-pointer items-center justify-between rounded-lg bg-dart-black/5 p-3 transition-colors hover:bg-dart-black/10 dark:bg-dart-white/5 dark:hover:bg-dart-white/10 ${
                 selectedScore === score.score ? 'bg-dart-red/10 hover:bg-dart-red/20' : ''
               }`}
               onClick={() => onScoreSelect(score.score)}
             >
-              <span className="font-display text-lg text-dart-black">{score.score}</span>
-              <span className="text-sm text-dart-green">{score.combinations} combinations</span>
+              <span className="font-display text-lg text-dart-black dark:text-dart-white">
+                {score.score}
+              </span>
+              <span className="dark:text-dart-dark-green text-sm text-dart-green dark:font-medium">
+                {score.combinations} combinations
+              </span>
             </li>
           ))}
         </ul>
