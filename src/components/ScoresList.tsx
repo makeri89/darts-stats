@@ -10,7 +10,7 @@ export function ScoresList({ scores, selectedScore, onScoreSelect }: Props) {
   return (
     <div className="rounded-lg bg-dart-white p-6 shadow-sm">
       <h3 className="mb-4 font-display text-2xl text-dart-black">All Scores</h3>
-      <div className="max-h-[300px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-dart-black/5 scrollbar-thumb-dart-black/20">
+      <div className="max-h-[300px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-dart-black/5 scrollbar-thumb-dart-green">
         <ul className="space-y-2">
           {scores.map((score, index) => (
             <li
