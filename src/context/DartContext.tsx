@@ -11,6 +11,7 @@ export function DartProvider({ children }: { children: ReactNode }) {
     trebles: -1,
   });
   const [showOnlyCheckouts, setShowOnlyCheckouts] = useState(false);
+  const [hideZeroScores, setHideZeroScores] = useState(false);
 
   const combs = calculateDartCombinations();
 
@@ -20,6 +21,7 @@ export function DartProvider({ children }: { children: ReactNode }) {
     const singles = combo.filter((d) => !d.startsWith('D') && !d.startsWith('T')).length;
 
     if (showOnlyCheckouts && doubles === 0) return false;
+    if (hideZeroScores && combo.includes('0')) return false;
 
     return (
       (filters.doubles === -1 || doubles === filters.doubles) &&
@@ -51,11 +53,13 @@ export function DartProvider({ children }: { children: ReactNode }) {
     setSelectedScore,
     filters,
     showOnlyCheckouts,
+    hideZeroScores,
     filteredData: data,
     sortedScores,
     filteredCombinations,
     handleFilterChange,
     setShowOnlyCheckouts,
+    setHideZeroScores,
   };
 
   return <DartContext.Provider value={value}>{children}</DartContext.Provider>;

@@ -11,6 +11,8 @@ export interface DartContextType {
   filteredCombinations: (score: number) => [string, string, string][];
   handleFilterChange: (type: keyof DartFiltersType, value: string) => void;
   setShowOnlyCheckouts: (value: boolean) => void;
+  hideZeroScores: boolean;
+  setHideZeroScores: (value: boolean) => void;
 }
 
 export const DartContext = createContext<DartContextType | undefined>(undefined);

@@ -15,6 +15,8 @@ function App() {
     filteredCombinations,
     handleFilterChange,
     setShowOnlyCheckouts,
+    hideZeroScores,
+    setHideZeroScores,
   } = useDartContext();
 
   return (
@@ -30,8 +32,10 @@ function App() {
         <DartFilters
           filters={filters}
           showOnlyCheckouts={showOnlyCheckouts}
+          hideZeroScores={hideZeroScores}
           onFilterChange={handleFilterChange}
           onCheckoutChange={setShowOnlyCheckouts}
+          onHideZeroChange={setHideZeroScores}
         />
 
         <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-4">
