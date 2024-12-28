@@ -11,7 +11,6 @@ function App() {
     filters,
     showOnlyCheckouts,
     filteredData,
-    sortedScores,
     filteredCombinations,
     handleFilterChange,
     setShowOnlyCheckouts,
@@ -41,7 +40,7 @@ function App() {
         <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-4">
           <ScoresChart data={filteredData} onBarClick={(data) => setSelectedScore(data.score)} />
           <ScoresList
-            scores={sortedScores}
+            scores={filteredData}
             selectedScore={selectedScore}
             onScoreSelect={setSelectedScore}
           />

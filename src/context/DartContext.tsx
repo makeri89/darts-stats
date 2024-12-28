@@ -35,8 +35,6 @@ export function DartProvider({ children }: { children: ReactNode }) {
     combinations: combinations.filter(filterCombination).length,
   }));
 
-  const sortedScores = [...data].sort((a, b) => b.combinations - a.combinations);
-
   const handleFilterChange = (type: keyof DartFiltersType, value: string) => {
     setFilters((prev) => ({
       ...prev,
@@ -55,7 +53,6 @@ export function DartProvider({ children }: { children: ReactNode }) {
     showOnlyCheckouts,
     hideZeroScores,
     filteredData: data,
-    sortedScores,
     filteredCombinations,
     handleFilterChange,
     setShowOnlyCheckouts,

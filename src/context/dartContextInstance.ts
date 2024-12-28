@@ -7,7 +7,6 @@ export interface DartContextType {
   filters: DartFiltersType;
   showOnlyCheckouts: boolean;
   filteredData: { score: number; combinations: number }[];
-  sortedScores: { score: number; combinations: number }[];
   filteredCombinations: (score: number) => [string, string, string][];
   handleFilterChange: (type: keyof DartFiltersType, value: string) => void;
   setShowOnlyCheckouts: (value: boolean) => void;
