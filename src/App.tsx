@@ -17,6 +17,10 @@ function App() {
     setShowOnlyCheckouts,
     hideZeroScores,
     setHideZeroScores,
+    requiredScore,
+    setRequiredScore,
+    secondDartScore,
+    setSecondDartScore,
   } = useDartContext();
 
   return (
@@ -41,6 +45,10 @@ function App() {
           onFilterChange={handleFilterChange}
           onCheckoutChange={setShowOnlyCheckouts}
           onHideZeroChange={setHideZeroScores}
+          requiredScore={requiredScore}
+          onRequiredScoreChange={setRequiredScore}
+          secondDartScore={secondDartScore}
+          onSecondDartScoreChange={setSecondDartScore}
         />
 
         <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-4">

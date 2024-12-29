@@ -12,6 +12,10 @@ export interface DartContextType {
   setShowOnlyCheckouts: (value: boolean) => void;
   hideZeroScores: boolean;
   setHideZeroScores: (value: boolean) => void;
+  requiredScore: string | null;
+  setRequiredScore: (value: string | null) => void;
+  secondDartScore: string | null;
+  setSecondDartScore: (value: string | null) => void;
 }
 
 export const DartContext = createContext<DartContextType | undefined>(undefined);

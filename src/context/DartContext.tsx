@@ -12,6 +12,8 @@ export function DartProvider({ children }: { children: ReactNode }) {
   });
   const [showOnlyCheckouts, setShowOnlyCheckouts] = useState(false);
   const [hideZeroScores, setHideZeroScores] = useState(false);
+  const [requiredScore, setRequiredScore] = useState<string | null>(null);
+  const [secondDartScore, setSecondDartScore] = useState<string | null>(null);
 
   const combs = calculateDartCombinations();
 
@@ -22,6 +24,9 @@ export function DartProvider({ children }: { children: ReactNode }) {
 
     if (showOnlyCheckouts && doubles === 0) return false;
     if (hideZeroScores && combo.includes('0')) return false;
+
+    if (requiredScore && !combo.includes(requiredScore)) return false;
+    if (secondDartScore && !combo.includes(secondDartScore)) return false;
 
     return (
       (filters.doubles === -1 || doubles === filters.doubles) &&
@@ -43,7 +48,31 @@ export function DartProvider({ children }: { children: ReactNode }) {
   };
 
   const filteredCombinations = (score: number) => {
-    return combs[score].combinations.filter(filterCombination);
+    const filtered = combs[score].combinations.filter(filterCombination);
+
+    if (requiredScore || secondDartScore) {
+      return filtered.map((combo) => {
+        const result = [...combo] as [string, string, string];
+
+        if (requiredScore) {
+          const index = result.indexOf(requiredScore);
+          if (index > 0) {
+            [result[0], result[index]] = [result[index], result[0]];
+          }
+        }
+
+        if (secondDartScore) {
+          const index = result.indexOf(secondDartScore);
+          if (index !== 1 && index !== -1) {
+            [result[1], result[index]] = [result[index], result[1]];
+          }
+        }
+
+        return result;
+      });
+    }
+
+    return filtered;
   };
 
   const value = {
@@ -57,6 +86,10 @@ export function DartProvider({ children }: { children: ReactNode }) {
     handleFilterChange,
     setShowOnlyCheckouts,
     setHideZeroScores,
+    requiredScore,
+    setRequiredScore,
+    secondDartScore,
+    setSecondDartScore,
   };
 
   return <DartContext.Provider value={value}>{children}</DartContext.Provider>;
