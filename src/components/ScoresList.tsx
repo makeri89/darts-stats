@@ -82,9 +82,12 @@ export function ScoresList({ scores, selectedScore, onScoreSelect }: Props) {
           ))}
         </ul>
       </div>
-      <p className="mt-4 text-sm text-dart-black/60 dark:text-dart-white/60">
-        Amount of possible scores: {scores.filter((s) => s.combinations > 0).length}
-      </p>
+      <div className="mt-4 space-y-1 text-sm text-dart-black/60 dark:text-dart-white/60">
+        <p>Amount of possible scores: {scores.filter((s) => s.combinations > 0).length}</p>
+        <p>
+          Total possible combinations: {scores.reduce((sum, score) => sum + score.combinations, 0)}
+        </p>
+      </div>
     </div>
   );
 }
