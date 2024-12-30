@@ -25,6 +25,15 @@ export function DartProvider({ children }: { children: ReactNode }) {
     if (showOnlyCheckouts && doubles === 0) return false;
     if (hideZeroScores && combo.includes('0')) return false;
 
+    if (requiredScore && secondDartScore) {
+      if (!combo.includes(requiredScore)) return false;
+      // remove the required score from the combo without editing the original array
+      const index = combo.indexOf(requiredScore);
+      const newCombo = [...combo];
+      newCombo.splice(index, 1);
+      if (!newCombo.includes(secondDartScore)) return false;
+    }
+
     if (requiredScore && !combo.includes(requiredScore)) return false;
     if (secondDartScore && !combo.includes(secondDartScore)) return false;
 
