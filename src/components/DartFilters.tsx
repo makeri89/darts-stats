@@ -49,7 +49,7 @@ export function DartFilters({
   );
 
   return (
-    <div className="dark:bg-dart-dark-white mb-8 rounded-lg bg-dart-white p-6 shadow-sm">
+    <div className="mb-8 rounded-lg bg-dart-white p-6 shadow-sm dark:bg-dart-dark-white">
       <div className="space-y-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {(['singles', 'doubles', 'trebles'] as const).map((type) => (
@@ -60,7 +60,7 @@ export function DartFilters({
               <select
                 value={filters[type]}
                 onChange={(e) => onFilterChange(type, e.target.value)}
-                className="dark:bg-dart-dark-white form-select rounded border-dart-black/20 bg-dart-white text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:text-dart-white"
+                className="form-select rounded border-dart-black/20 bg-dart-white text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:bg-dart-dark-white dark:text-dart-white"
               >
                 <option value="-1">Any amount</option>
                 <option value="0">None</option>
@@ -103,7 +103,7 @@ export function DartFilters({
             <select
               value={requiredScore || ''}
               onChange={(e) => onRequiredScoreChange(e.target.value || null)}
-              className="dark:bg-dart-dark-white form-select rounded border-dart-black/20 bg-dart-white text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:text-dart-white"
+              className="form-select rounded border-dart-black/20 bg-dart-white text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:bg-dart-dark-white dark:text-dart-white"
             >
               {dartOptions}
             </select>
@@ -114,7 +114,7 @@ export function DartFilters({
             <select
               value={secondDartScore || ''}
               onChange={(e) => onSecondDartScoreChange(e.target.value || null)}
-              className="dark:bg-dart-dark-white form-select rounded border-dart-black/20 bg-dart-white text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:text-dart-white"
+              className="form-select rounded border-dart-black/20 bg-dart-white text-dart-black focus:border-dart-green focus:ring-dart-green dark:border-dart-white/20 dark:bg-dart-dark-white dark:text-dart-white"
             >
               {dartOptions}
             </select>

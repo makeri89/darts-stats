@@ -24,7 +24,7 @@ function App() {
   } = useDartContext();
 
   return (
-    <div className="dark:bg-dart-dark-cream min-h-screen bg-dart-cream font-body">
+    <div className="min-h-screen bg-dart-cream font-body dark:bg-dart-dark-cream">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <header className="mb-8 flex items-center justify-between">
           <div>
